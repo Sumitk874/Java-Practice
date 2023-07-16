@@ -20,7 +20,10 @@ public class Strings{
         // its because of interning
 
         // Performance of Strings is not good
-        
+        // eg String s = "hello"
+        // s += "e"
+        // this would create a new space in heap copy "hello" in that and then add "e" at the end so we can see this is very resource intensive
+         
 
         
         subString(m);
