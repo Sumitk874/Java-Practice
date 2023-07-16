@@ -1,7 +1,7 @@
 public class Strings{
     public static void main(String[] args) {
         String m = "abccbc";
-        String n = "abccbc";
+        // String n = "abccbc";
         
         
         
