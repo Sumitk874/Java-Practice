@@ -30,6 +30,49 @@ public class Strings{
         // System.out.println(isPalindrome(m));
     }
 
+
+    static String stringCompression1(String str){
+        String s = str.charAt(0)+"";
+        for (int i = 1; i < str.length(); i++) {
+            char curr = str.charAt(i);
+            char prev = str.charAt(i-1);
+            
+            if(curr != prev){
+                s += curr;
+            }
+            
+        }
+        return s;
+
+    }
+
+    static String stringCompresion2(String str){
+        String s = str.charAt(0)+"";
+        int count = 1;
+        for (int i = 1; i < str.length(); i++) {
+            char curr = str.charAt(i);
+            char prev = str.charAt(i-1);
+            
+            if(curr == prev){
+                count++;
+            }else{
+                if(count>1){
+                    s += count;
+                }
+                s += curr; 
+            }
+            
+        }
+        if(count>1){
+            s += count;
+            count = 1;
+        }
+        
+        return s;
+    }
+
+    
+
     static void subString(String s){
         for (int i = 0; i < s.length(); i++) {
             for (int j = i+1; j <= s.length(); j++) {
