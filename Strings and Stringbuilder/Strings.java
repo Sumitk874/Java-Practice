@@ -15,7 +15,7 @@ public class Strings{
         // == checks for address they're pointing 
 
 
-
+        
         subString(m);
         // System.out.println(isPalindrome(m));
     }
