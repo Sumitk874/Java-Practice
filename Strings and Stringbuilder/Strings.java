@@ -14,6 +14,13 @@ public class Strings{
         // don't use == instead use .equals()
         // == checks for address they're pointing 
 
+        // Immutability
+        // Strings are immutable 
+        // reference is mutable but instance is not 
+        // its because of interning
+
+        // Performance of Strings is not good
+        
 
         
         subString(m);
