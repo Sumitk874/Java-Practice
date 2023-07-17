@@ -26,8 +26,24 @@ public class Strings{
          
 
         
-        subString(m);
+        // subString(m);
         // System.out.println(isPalindrome(m));
+        System.out.println(asciiDiff(m));
+    }
+
+    static String asciiDiff(String s){
+        StringBuilder sb = new StringBuilder();
+        sb.append(s.charAt(0));
+
+        for (int i = 1; i < s.length(); i++) {
+            char curr = s.charAt(i);
+            char prev = s.charAt(i-1);
+
+            int gap = curr - prev;
+            sb.append(gap);
+            sb.append(curr);
+        }
+        return sb.toString();
     }
 
 
