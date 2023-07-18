@@ -4,7 +4,6 @@ public class Strings{
         // String n = "abccbc";
         
         
-        
         // Interning
         // m and n point to the same string 
         // if a string of same value is present inside intern pool then new variable gets the address of that pre existing string to point at , this is called interning(Sharing memory by string to optimise space)
@@ -28,7 +27,38 @@ public class Strings{
         
         // subString(m);
         // System.out.println(isPalindrome(m));
-        System.out.println(asciiDiff(m));
+        // System.out.println(asciiDiff(m));
+        String s = "abc";
+        allPermutation(s);
+    }
+
+    static void allPermutation(String str){
+        int n = str.length();
+        int f = factorial(n);
+
+        for (int i = 0; i < f; i++) {
+            StringBuilder sb = new StringBuilder(str);
+            int temp = i;
+            for(int div = n;div>0;div--){
+                int q = temp / div;
+                int r = temp % div;
+
+                System.out.print(sb.charAt(r));
+                sb.deleteCharAt(r);
+
+                temp = q;
+
+            }
+            System.out.println();
+        }
+    }
+
+    static int factorial(int n){
+        int val = 1;
+        for (int i = 2; i <= n; i++) {
+            val *= i;
+        }
+        return val;
     }
 
     static String asciiDiff(String s){
@@ -45,7 +75,6 @@ public class Strings{
         }
         return sb.toString();
     }
-
 
     static String stringCompression1(String str){
         String s = str.charAt(0)+"";

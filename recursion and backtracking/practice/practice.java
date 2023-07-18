@@ -5,7 +5,36 @@ public class practice {
         // printName(0, 5);
         // printNum(1, 6);
         // printNumRev(5);
+        // printDecInc(5);
+        pzz(2);
     }
+
+    static void pzz(int n){
+        if(n==0) return;
+        System.out.println("pre "+ n );
+        pzz(n-1);
+        System.out.println("in "+ n );
+        pzz(n-1);
+        System.out.println("post "+ n );
+    }
+
+    static int factorial(int n){
+
+        int fact = factorial(n-1); // gives factorial of (n-1)
+        int ans = n * fact; // multiply with n to make factorial of n 
+
+        return ans;
+    }
+
+
+
+    static void printDecInc(int n){
+        if(n==0) return;
+        System.out.println(n);
+        printDecInc(n-1);
+        System.out.println(n);
+    }
+
 
     // print something n times
     static void printName(int i,int n){
