@@ -1,7 +1,8 @@
-import java.util.Arrays;
+// import java.util.Arrays;
 import java.util.*;
 
 public class recursion {
+    static String[] codes = {"abc","def","ghi","jkl","mno","pqrs","tuv","wxyz"};
     public static void main(String[] args) {
         // printDecreasing(5);
         // printIncreasing(8);
@@ -19,8 +20,42 @@ public class recursion {
         // System.out.println(firstIndexOccurence(arr, 0, 5));
         // System.out.println(lastIndexOccurence(arr, 0, 4));
         // System.out.println(Arrays.toString(allIndices(arr, 0, 5, 0)));
-        System.out.println(getSubSequence("abcdefc"));
+        // System.out.println(getSubSequence("abcdefc"));
+        System.out.println(letterCombinations("567"));
 
+    }
+
+
+    static List<String> letterCombinations(String digits) {
+        List<String> ans = new ArrayList<>();
+        if (digits.length() == 0) {
+            return ans;
+        }
+
+        return letterCombinationsHelper(digits);
+    }
+
+    static List<String> letterCombinationsHelper(String digits) {
+        List<String> ans = new ArrayList<>();
+
+        if (digits.length() == 0) {
+            ans.add("");
+            return ans;
+        }
+
+        char ch = digits.charAt(0);
+        String ros = digits.substring(1);
+        List<String> recRes = letterCombinationsHelper(ros);
+        String chFromCodes = codes[ch - '2'];
+
+        for (int i = 0; i < chFromCodes.length(); i++) {
+            char chCode = chFromCodes.charAt(i);
+            for (String m : recRes) {
+                ans.add(chCode + m);
+            }
+        }
+
+        return ans;
     }
 
     static ArrayList<String> getSubSequence(String str){
