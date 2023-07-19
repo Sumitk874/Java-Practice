@@ -11,7 +11,7 @@ public class recursion {
         // System.out.println(powerLog(5, 3)); 
         // pzz(2);
         // towerOfHanoi(3, 1, 2, 3);
-        int [] arr = {1,2,3,4,4,4,5,5,5,5,6,7,8,9};
+        // int [] arr = {1,2,3,4,4,4,5,5,5,5,6,7,8,9};
         // printArray(arr, 6);
         // printArrayRev(arr, 0);
         // System.out.println(maxOfArray(arr, 0));
@@ -22,7 +22,34 @@ public class recursion {
         // System.out.println(Arrays.toString(allIndices(arr, 0, 5, 0)));
         // System.out.println(getSubSequence("abcdefc"));
         // System.out.println(letterCombinations("567"));
-        System.out.println(getStairsPath(4));
+        // System.out.println(getStairsPath(4));
+        // System.out.println(getMazePaths(1, 1, 3, 3));
+    }
+
+    public static ArrayList<String> getMazePaths(int sr, int sc, int dr, int dc) {
+        if (sr == dr && sc == dc) {
+            ArrayList<String> bc = new ArrayList<>();
+            bc.add("");
+            return bc;
+        }
+
+        ArrayList<String> paths = new ArrayList<>();
+
+        if (sc < dc) {
+            ArrayList<String> hPaths = getMazePaths(sr, sc + 1, dr, dc);
+            for (String h : hPaths) {
+                paths.add("h" + h);
+            }
+        }
+
+        if (sr < dr) {
+            ArrayList<String> vPaths = getMazePaths(sr + 1, sc, dr, dc);
+            for (String v : vPaths) {
+                paths.add("v" + v);
+            }
+        }
+
+        return paths;
     }
 
     static ArrayList<String> getStairsPath(int n){
