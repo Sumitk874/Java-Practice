@@ -21,10 +21,43 @@ public class recursion {
         // System.out.println(lastIndexOccurence(arr, 0, 4));
         // System.out.println(Arrays.toString(allIndices(arr, 0, 5, 0)));
         // System.out.println(getSubSequence("abcdefc"));
-        System.out.println(letterCombinations("567"));
-
+        // System.out.println(letterCombinations("567"));
+        System.out.println(getStairsPath(4));
     }
 
+    static ArrayList<String> getStairsPath(int n){
+        // Base case
+        if(n == 0){
+            ArrayList<String> bres = new ArrayList<>();
+            bres.add("");
+            return bres;
+        }else if(n<0){
+            ArrayList<String> bres = new ArrayList<>();
+            // bres.add("");
+            return bres;
+        }
+
+        
+        ArrayList<String> p1 = getStairsPath(n-1);
+        ArrayList<String> p2 = getStairsPath(n-2);
+        ArrayList<String> p3 = getStairsPath(n-3);
+
+        ArrayList<String> paths = new ArrayList<>();
+
+        for (String path : p1) {
+            paths.add(1+path);
+        }
+        for (String path : p2) {
+            paths.add(2+path);
+        }
+        for (String path : p3) {
+            paths.add(3+path);
+        }
+
+        return paths;
+        
+        
+    }
 
     static List<String> letterCombinations(String digits) {
         List<String> ans = new ArrayList<>();
