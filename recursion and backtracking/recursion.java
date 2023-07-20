@@ -24,6 +24,57 @@ public class recursion {
         // System.out.println(letterCombinations("567"));
         // System.out.println(getStairsPath(4));
         // System.out.println(getMazePaths(1, 1, 3, 3));
+        // System.out.println(getMazePathsWjumps(1, 1, 3, 3));
+        printSubsequence("abc", "");
+    }
+
+    public static void printSubsequence(String ques, String ans){
+        if(ques.length()==0){
+            System.out.println(ans);
+            return;
+        }
+        char ch = ques.charAt(0);
+        String roq = ques.substring(1);
+
+        printSubsequence(roq, ans + ch);
+        printSubsequence(roq, ans + "");
+        
+        
+    }
+
+    public static ArrayList<String> getMazePathsWjumps(int sr,int sc,int dr,int dc){
+        if(sr==dr && sc == dc){
+            ArrayList<String> bc = new ArrayList<>();
+            bc.add("");
+            return bc;
+        }
+        ArrayList<String> paths = new ArrayList<>();
+        
+        //Horizontal moves
+        for(int ms = 1;ms <= dc-sc;ms++){
+            ArrayList<String> hpaths = getMazePathsWjumps(sr,sc+ms,dr,dc); // columns change since we're moving horizontally
+            for(String hpath : hpaths){
+                paths.add("h"+ms+hpath);
+            }
+        }
+
+        //Vertical moves
+        for(int ms = 1;ms <= dr-sr;ms++){
+            ArrayList<String> vpaths = getMazePathsWjumps(sr+ms,sc,dr,dc); // columns change since we're moving horizontally
+            for(String vpath : vpaths){
+                paths.add("v"+ms+vpath);
+            }
+        }
+
+        //Diagonal moves
+        for(int ms = 1;ms<= dr-sr && ms <= dc-sc;ms++){
+            ArrayList<String> dpaths = getMazePathsWjumps(sr+ms,sc+ms,dr,dc); // columns change since we're moving horizontally
+            for(String dpath : dpaths){
+                paths.add("d"+ms+dpath);
+            }
+        }
+
+        return paths;
     }
 
     public static ArrayList<String> getMazePaths(int sr, int sc, int dr, int dc) {
