@@ -25,7 +25,31 @@ public class recursion {
         // System.out.println(getStairsPath(4));
         // System.out.println(getMazePaths(1, 1, 3, 3));
         // System.out.println(getMazePathsWjumps(1, 1, 3, 3));
-        printSubsequence("abc", "");
+        // printSubsequence("abc", "");
+        // printKPC("78", "");
+    }
+
+    public static void printStairPath(String ques, String ans){
+
+    }
+
+    public static void printKPC(String ques, String ans){
+        if(ques.length()==0){
+            System.out.println(ans);
+            return;
+        }
+        
+        char ch = ques.charAt(0);
+        String roq = ques.substring(1);
+
+        String codeForCh = codes[ch-'2'];
+        for (int i = 0; i < codeForCh.length(); i++) {
+            char option = codeForCh.charAt(i);
+            printKPC(roq, ans + option);
+        }
+        
+
+
     }
 
     public static void printSubsequence(String ques, String ans){
