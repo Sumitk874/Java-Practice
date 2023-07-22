@@ -27,9 +27,24 @@ public class recursion {
         // System.out.println(getMazePathsWjumps(1, 1, 3, 3));
         // printSubsequence("abc", "");
         // printKPC("78", "");
+        printStairPath(4, "");
     }
 
-    public static void printStairPath(String ques, String ans){
+    public static void printStairPath(int n, String path){
+        if(n<0){
+            return;
+        }
+        if(n==0){
+            System.out.println(path);
+            return;
+        }
+
+        //options
+        printStairPath(n-1, path + "1");
+        printStairPath(n-2, path + "2");
+        printStairPath(n-3, path + "3");
+
+
 
     }
 
