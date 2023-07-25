@@ -28,7 +28,46 @@ public class recursion {
         // printSubsequence("abc", "");
         // printKPC("78", "");
         // printStairPath(4, "");
-        printMazePath(0, 0, 3, 3, "");
+        // printMazePath(0, 0, 3, 3, "");
+        // printMazePathWJumps(1, 1, 3, 3,"");
+        printPermutations("abc", "");
+    }
+
+    public static void printPermutations(String ques, String ans){
+        // to extract i^th  character from string str.charAt(i) 
+        // left part => str.substring(0,i)
+        // rigth part => str.substring(i+1)
+        if(ques.length()==0){
+            System.out.println(ans);
+            return;
+        }
+
+        for (int i = 0; i < ques.length(); i++) {
+            char ch = ques.charAt(i);
+            String leftPart = ques.substring(0, i);
+            String rightPart = ques.substring(i+1);
+            String roq = leftPart+rightPart;
+            printPermutations(roq, ans + ch);
+        }
+    }
+
+    public static void printMazePathWJumps(int sr, int sc, int dr, int dc, String pathSoFar){
+        if(sr==dr && sc==dc){
+            System.out.println(pathSoFar);
+            return;
+        }
+        for(int ms=1;ms<=dc-sc;ms++){
+            //horizontal
+            printMazePathWJumps(sr, sc+ms, dr, dc,pathSoFar + "h" + ms);
+        }
+        for(int ms=1;ms<=dr-sr;ms++){
+            //vertical
+            printMazePathWJumps(sr+ms, sc, dr, dc,pathSoFar + "v" + ms);
+        }
+        for(int ms=1;ms<=dc-sc && ms<=dr-sr;ms++){
+            //diagonal
+            printMazePathWJumps(sr+ms, sc+ms, dr, dc,pathSoFar + "d" + ms);
+        }
     }
 
     public static void printMazePath(int sr, int sc, int dr, int dc, String pathSoFar){
