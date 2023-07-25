@@ -32,12 +32,19 @@ public class recursion {
     }
 
     public static void printMazePath(int sr, int sc, int dr, int dc, String pathSoFar){
+        if(sr > dr|| sc > dc){
+            return;
+        }
 
+        if(sr==dr && sc == dc){
+            System.out.println(pathSoFar);
+            return;
+        }
         
         //horizontal
-        printMazePath(sr, sc+1, dr, dc, path + "h");
+        printMazePath(sr, sc+1, dr, dc, pathSoFar + "h");
         //vertical
-        printMazePath(sr+1, sc, dr, dc, path+"v");
+        printMazePath(sr+1, sc, dr, dc, pathSoFar+"v");
 
     }
 
